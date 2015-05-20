@@ -9,12 +9,17 @@ module FlowerBundler
   def self.process_order(order)
     raise ArgumentError, 'Missing order information' if order.nil? or order.empty?
     total_price = 0
+    result = []
     order.lines.map(&:chomp).each do |an_order|
       order = Order.parse an_order
-      order.process
-      # sum the results
+      bundles = order.process
+      result << {
+        request: an_order,
+        total:   bundles.inject(0) { |n, bundle| bundle[:count] * bundle[:price] + n },
+        bundles: bundles
+      }
     end
-    # return the report
+    result
   end
 
 end

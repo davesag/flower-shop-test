@@ -1,8 +1,11 @@
 require 'spec_helper'
 
 describe FlowerBundler do
-
-  let(:order) { (expected.map { |result| result[:request] }).join("\n") }
+  let(:catalogue) { FlowerBundler::Catalogue.instance }
+  let(:rose)      { build :rose  }
+  let(:lily)      { build :lily  }
+  let(:tulip)     { build :tulip }
+  let(:order)     { (expected.map { |result| result[:request] }).join("\n") }
 
   let(:expected) do
     [
@@ -52,8 +55,13 @@ describe FlowerBundler do
     ]
   end
 
+  before do
+    catalogue << rose
+    catalogue << lily
+    catalogue << tulip
+  end
+
   it 'returns the correct output' do
-    pending "Not yet implemented"
     expect(FlowerBundler.process_order(order)).to eq expected
   end
 

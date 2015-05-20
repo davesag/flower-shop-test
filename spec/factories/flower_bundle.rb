@@ -20,11 +20,11 @@ FactoryGirl.define do
     end
     trait :medium do
       amount 6
-      price 1699
+      price 1695
     end
     trait :large do
       amount 9
-      price 2499
+      price 2495
     end
     initialize_with { new(attributes) }
   end
@@ -33,7 +33,7 @@ FactoryGirl.define do
     skip_create
     trait :small do
       amount 3
-      price 599
+      price 595
     end
     trait :medium do
       amount 5
