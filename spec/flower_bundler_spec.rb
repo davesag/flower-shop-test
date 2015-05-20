@@ -61,6 +61,8 @@ describe FlowerBundler do
     catalogue << tulip
   end
 
+  after { catalogue.reset }
+
   it 'returns the correct output' do
     expect(FlowerBundler.process_order(order)).to eq expected
   end

@@ -14,19 +14,19 @@ I selected `Ruby version 2.2.2` as the language to write this in, which is fair 
 
 I started by converting the requirements into a simple suite of `rspec` tests set to `pending` just to get down everything I figured I'd need.
 
-I used [FactoryGirl]() to define the flower / bundle combinations defined in the brief and used this to guide my overall system design.
+I used [FactoryGirl](https://github.com/thoughtbot/factory_girl) to define the flower / bundle combinations defined in the brief and used this to guide my overall system design.
 
 I have adopted a 'simplest thing that works' approach and, as such, avoided using any sort of object persistence, instead defining a simple `catalogue` object which is capable of looking up flowers by their codes.
 
 ## Design
 
-The flower bundler problem is an example of the classical [knapsack problem](http://en.wikipedia.org/wiki/Knapsack_problem), with the constraint that the returned bundles **must** comprise of the number of flowers requested.
+The flower bundler problem is a derivative of the classic [knapsack problem](http://en.wikipedia.org/wiki/Knapsack_problem), with the constraint that the returned bundles **must** comprise of the number of flowers requested, and you may use multiple copies of a bundle.
 
 I have defined the following classes, all namespaced within a `FlowerBundler` module.
 
 * `Catalogue` — a singleton that allows flowers to be added and searched.  This takes the place of any kind of object persistence.
 * `FlowerBundle` — holds details of the flower count and price for a bundle of flowers.
-* `Flower` — has a name, code, list of bundles, and a `choose_bundle` method that implements the core bundle selection logic.
+* `Flower` — has a name, code, list of bundles, and a `choose_bundles` method that implements the core bundle selection logic in a simple, recursive way.
 * `Order` — a simple customer order that can be created via `Order.parse`
 * `Version` — just for housekeeping. Not actually used.
 
@@ -50,7 +50,7 @@ The test is already in the form of a suite of `rspec` tests so simply run
 rspec
 ```
 
-There are _x_ tests giving a _x_% code coverage of the project.
+There are 14 tests giving 100% code coverage of the project.
 
 ## License
 

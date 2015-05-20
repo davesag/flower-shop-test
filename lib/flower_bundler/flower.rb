@@ -21,6 +21,8 @@ module FlowerBundler
       @results
     end
 
+    private
+
     def try_bundles(bundles_to_try, remaining_flowers, flower_count)
       return if remaining_flowers == 0 or @total >= flower_count
       bundles_to_try.each do |bundle|
@@ -32,8 +34,6 @@ module FlowerBundler
         end
       end
     end
-
-    private
 
     def add_to_results(bundle)
       existing = @results.find_index {|item| item[:size] == bundle.amount }
