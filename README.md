@@ -12,13 +12,27 @@ I solemnly declare that I did not copy this code from anyone else, and that it's
 
 I selected `Ruby version 2.2.2` as the language to write this in, which is fair given I am pitching for a `Ruby` focused job.
 
-I started by converting the requirements into a simple suite of `rspec` tests set to `skip` just to get down everything I figured I'd need.
+I started by converting the requirements into a simple suite of `rspec` tests set to `pending` just to get down everything I figured I'd need.
 
-_fill this in later_
+I used [FactoryGirl]() to define the flower / bundle combinations defined in the brief and used this to guide my overall system design.
+
+I have adopted a 'simplest thing that works' approach and, as such, avoided using any sort of object persistence, instead defining a simple `catalogue` object which is capable of looking up flowers by their codes.
 
 ## Design
 
-_fill this in later_
+The flower bundler problem is an example of the classical [knapsack problem](http://en.wikipedia.org/wiki/Knapsack_problem), with the constraint that the returned bundles **must** comprise of the number of flowers requested.
+
+I have defined the following classes, all namespaced within a `FlowerBundler` module.
+
+* `Catalogue` — a singleton that allows flowers to be added and searched.  This takes the place of any kind of object persistence.
+* `FlowerBundle` — holds details of the flower count and price for a bundle of flowers.
+* `Flower` — has a name, code, list of bundles, and a `choose_bundle` method that implements the core bundle selection logic.
+* `Order` — a simple customer order that can be created via `Order.parse`
+* `Version` — just for housekeeping. Not actually used.
+
+The `FlowerBundler` module itself exposes a `process_order` method, the high-level input interface to the system. It returns a result in the form of a hash, containing the receipt details.
+
+_note_ I'll almost certainly turn that hash into a `Receipt` object at some stage.
 
 ## Setup
 
