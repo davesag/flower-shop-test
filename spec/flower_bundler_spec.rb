@@ -52,8 +52,6 @@ describe FlowerBundler do
     ]
   end
 
-  let(:rose) { build :rose }
-
   it 'returns the correct output' do
     pending "Not yet implemented"
     expect(FlowerBundler.process_order(order)).to eq expected

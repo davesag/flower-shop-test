@@ -7,6 +7,7 @@ FactoryGirl.define do
       create(:roses, :small),
       create(:roses, :large)
     ]}
+    initialize_with { new(attributes) }
   end
 
   factory :lily, class: FlowerBundler::Flower do
@@ -18,6 +19,7 @@ FactoryGirl.define do
       create(:lilies, :medium),
       create(:lilies, :large)
     ]}
+    initialize_with { new(attributes) }
   end
 
   factory :tulip, class: FlowerBundler::Flower do
@@ -29,5 +31,6 @@ FactoryGirl.define do
       create(:tulips, :medium),
       create(:tulips, :large)
     ]}
+    initialize_with { new(attributes) }
   end
 end

@@ -3,7 +3,7 @@ module FlowerBundler
     attr_accessor :count, :code
 
     def initialize(count:, code:)
-      @count = count
+      @count = count.to_i
       @code = code
     end
 

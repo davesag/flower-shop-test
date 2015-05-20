@@ -9,6 +9,7 @@ FactoryGirl.define do
       amount 10
       price 1299
     end
+    initialize_with { new(attributes) }
   end
 
   factory :lilies, class: FlowerBundler::FlowerBundle do
@@ -25,7 +26,7 @@ FactoryGirl.define do
       amount 9
       price 2499
     end
-
+    initialize_with { new(attributes) }
   end
 
   factory :tulips, class: FlowerBundler::FlowerBundle do
@@ -42,7 +43,7 @@ FactoryGirl.define do
       amount 9
       price 1699
     end
-
+    initialize_with { new(attributes) }
   end
 
 end

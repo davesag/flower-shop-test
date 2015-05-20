@@ -1,7 +1,7 @@
 require_relative 'flower_bundler/version'
 require_relative 'flower_bundler/flower'
-require_relative 'flower_bundler/order'
 require_relative 'flower_bundler/flower_bundle'
+require_relative 'flower_bundler/order'
 
 module FlowerBundler
 
