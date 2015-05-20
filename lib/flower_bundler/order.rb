@@ -8,8 +8,9 @@ module FlowerBundler
     end
 
     def process
-      # work out the best bundles
-      # return result
+      flower = Catalogue.find code
+      return if flower.nil?
+      flower.choose_bundles count
     end
 
     def self.parse(order_line)

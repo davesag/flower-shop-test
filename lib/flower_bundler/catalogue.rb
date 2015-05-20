@@ -20,6 +20,10 @@ module FlowerBundler
       @flowers_by_code = {}
     end
 
+    def self.find(code)
+      Catalogue.instance.find(code)
+    end
+
     alias_method :'<<', :add
   end
 end

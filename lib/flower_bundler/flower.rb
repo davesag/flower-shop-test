@@ -7,5 +7,9 @@ module FlowerBundler
       @code = code
       @bundles = bundles
     end
+
+    def choose_bundles(count)
+
+    end
   end
 end
