@@ -4,7 +4,7 @@ This is [Dave Sag](http://cv.davesag.com)'s implementation of [Cogent](http://ww
 
 *If you have been asked to do this test I urge you to not to copy my, or anyone else's, work.*
 
-[![Build Status](https://travis-ci.org/davesag/flower-shop-test.svg?branch=add_code_climate_and_travis_hooks)](https://travis-ci.org/davesag/flower-shop-test) [![Code Climate](https://codeclimate.com/github/davesag/flower-shop-test/badges/gpa.svg)](https://codeclimate.com/github/davesag/flower-shop-test) [![Test Coverage](https://codeclimate.com/github/davesag/flower-shop-test/badges/coverage.svg)](https://codeclimate.com/github/davesag/flower-shop-test/coverage)
+[![Build Status](https://travis-ci.org/davesag/flower-shop-test.svg)](https://travis-ci.org/davesag/flower-shop-test) [![Code Climate](https://codeclimate.com/github/davesag/flower-shop-test/badges/gpa.svg)](https://codeclimate.com/github/davesag/flower-shop-test) [![Test Coverage](https://codeclimate.com/github/davesag/flower-shop-test/badges/coverage.svg)](https://codeclimate.com/github/davesag/flower-shop-test/coverage)
 
 ## Declaration
 
@@ -30,11 +30,10 @@ I have defined the following classes, all namespaced within a `FlowerBundler` mo
 * `FlowerBundle` — holds details of the flower count and price for a bundle of flowers.
 * `Flower` — has a name, code, list of bundles, and a `choose_bundles` method that implements the core bundle selection logic in a simple, recursive way.
 * `Order` — a simple customer order that can be created via `Order.parse`
-* `Version` — just for housekeeping. Not actually used.
+* `OrderResult` — container for the processed result of an order
+* `Receipt` — a collection of order results with a copy of the initial customer order string and the total price.  This can be output to formatted text via its `to_formatted` method.
 
 The `FlowerBundler` module itself exposes a `process_order` method, the high-level input interface to the system. It returns a result in the form of a hash, containing the receipt details.
-
-_note_ I'll almost certainly turn that hash into a `Receipt` object at some stage.
 
 ## Setup
 
