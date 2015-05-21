@@ -1,3 +1,5 @@
+require 'singleton'
+
 module FlowerBundler
 
   # A simple singleton registry that hold the flowers that are for sale

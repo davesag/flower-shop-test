@@ -45,13 +45,27 @@ bundle
 
 ## To run
 
-The test is already in the form of a suite of `rspec` tests and can be run via the default rake task:
+The test itself in the form of a suite of `rspec` tests and can be run via the default rake task:
 
 ```sh
 rake
 ```
 
-There are 14 tests giving 100% code coverage of the project.
+There are 23 tests giving [100% code coverage](https://codeclimate.com/github/davesag/flower-shop-test/coverage) of the project.
+
+I've also added a simple command line app `flower_shop_app`
+
+```sh
+ruby flower_shop_app.rb XX YYY
+```
+
+where `XX` is some number and `YYY` is one of the following valid Flower codes
+
+* `R12`
+* `L09`
+* `T58`
+
+It will either return a receipt, or an error if it cabn't construct a valid set of Flower Bundles.
 
 ## License
 
