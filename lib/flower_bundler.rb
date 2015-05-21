@@ -14,18 +14,26 @@ require_relative 'flower_bundler/order'
 #   FlowerBundler.process_order(some_order_text)
 # It will return an array of results.
 module FlowerBundler
-  def self.process_order(order_text)
-    fail ArgumentError, 'Missing order information' if order_text.nil? || order_text.empty?
-    result = []
-    order_text.lines.map(&:chomp).each do |an_order|
-      order = Order.parse an_order
-      bundles = order.process
-      result << {
-        request: an_order,
+  class << self
+    def process_order(order_text)
+      fail ArgumentError, 'Missing order information' if order_text.nil? || order_text.empty?
+      result = []
+      order_text.lines.map(&:chomp).each do |an_order|
+        order = Order.parse an_order
+        bundles = order.process
+        result << build_result(order: an_order, bundles: bundles)
+      end
+      result
+    end
+
+    private
+
+    def build_result(order:, bundles:)
+      {
+        request: order,
         total:   bundles.inject(0) { |a, e| e[:count] * e[:price] + a },
         bundles: bundles
       }
     end
-    result
   end
 end
