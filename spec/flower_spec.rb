@@ -20,9 +20,9 @@ describe FlowerBundler::Flower do
 
     it 'returns a single bundle of 10 roses' do
       expect(subject.size).to eq 1
-      expect(subject.first[:count]).to  eq 1
-      expect(subject.first[:size] ).to  eq 10
-      expect(subject.first[:price]).to  eq 1299
+      expect(subject.first.count).to  eq 1
+      expect(subject.first.size ).to  eq 10
+      expect(subject.first.price).to  eq 1299
     end
   end
 
@@ -32,12 +32,12 @@ describe FlowerBundler::Flower do
 
     it 'returns a bundle of 9 lilies and a bundle of 6 lilies' do
       expect(subject.size).to eq 2
-      expect(subject.first[:count]).to  eq 1
-      expect(subject.first[:size] ).to  eq 9
-      expect(subject.first[:price]).to  eq 2495
-      expect(subject.last[:count] ).to  eq 1
-      expect(subject.last[:size]  ).to  eq 6
-      expect(subject.last[:price] ).to  eq 1695
+      expect(subject.first.count).to  eq 1
+      expect(subject.first.size ).to  eq 9
+      expect(subject.first.price).to  eq 2495
+      expect(subject.last.count ).to  eq 1
+      expect(subject.last.size  ).to  eq 6
+      expect(subject.last.price ).to  eq 1695
     end
   end
 
@@ -47,12 +47,12 @@ describe FlowerBundler::Flower do
 
     it 'returns 2 bundles of 5 tulips and a bundle of 3 tulips' do
       expect(subject.size).to eq 2
-      expect(subject.first[:count]).to  eq 2
-      expect(subject.first[:size] ).to  eq 5
-      expect(subject.first[:price]).to  eq 995
-      expect(subject.last[:count] ).to  eq 1
-      expect(subject.last[:size]  ).to  eq 3
-      expect(subject.last[:price] ).to  eq 595
+      expect(subject.first.count).to  eq 2
+      expect(subject.first.size ).to  eq 5
+      expect(subject.first.price).to  eq 995
+      expect(subject.last.count ).to  eq 1
+      expect(subject.last.size  ).to  eq 3
+      expect(subject.last.price ).to  eq 595
     end
   end
 
