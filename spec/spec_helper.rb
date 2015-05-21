@@ -3,7 +3,7 @@ Bundler.require(:test)
 require 'flower_bundler'
 
 FactoryGirl.find_definitions
-SimpleCov.start
+CodeClimate::TestReporter.start
 
 # I use an ~/.rspec file that holds config
 # color: true
