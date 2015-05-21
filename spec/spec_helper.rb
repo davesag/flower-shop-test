@@ -1,7 +1,4 @@
 Bundler.require(:test)
-CodeClimate::TestReporter.configure do |config|
-  config.path_prefix = "lib"
-end
 
 CodeClimate::TestReporter.start if ENV['CODECLIMATE_REPO_TOKEN']
 # codeclimate test reporter MUST go before the require of the project code
