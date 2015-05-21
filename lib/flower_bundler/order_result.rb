@@ -16,10 +16,10 @@ module FlowerBundler
       @count += 1
     end
 
-    def ==(another_result)
-      return false unless @count == another_result.count
-      return false unless @size  == another_result.size
-      return false unless @price == another_result.price
+    def ==(other)
+      return false unless @size == other.size
+      return false unless @count == other.count
+      return false unless @price == other.price
       true
     end
 

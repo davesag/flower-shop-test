@@ -11,9 +11,9 @@ module FlowerBundler
       @total = compute_total
     end
 
-    def ==(another_receipt)
+    def ==(other)
       # a request will always construct the same results and total
-      @request == another_receipt.request
+      @request == other.request
     end
 
     def to_formatted
@@ -31,7 +31,7 @@ module FlowerBundler
     end
 
     def to_dollars(cents)
-      "$#{sprintf('%.2f', cents / 100.0)}"
+      "$#{format('%.2f', cents / 100.0)}"
     end
   end
 end
