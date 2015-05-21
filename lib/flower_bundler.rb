@@ -2,6 +2,8 @@ require_relative 'flower_bundler/flower'
 require_relative 'flower_bundler/flower_bundle'
 require_relative 'flower_bundler/catalogue'
 require_relative 'flower_bundler/order'
+require_relative 'flower_bundler/order_result'
+require_relative 'flower_bundler/receipt'
 
 # The FlowerBundler module provides the top-level interface to the
 # order processing and flower bundle selection system
@@ -12,28 +14,17 @@ require_relative 'flower_bundler/order'
 #                        13 T58)
 # then call
 #   FlowerBundler.process_order(some_order_text)
-# It will return an array of results.
+# It will return an array of receipts, one for each order.
 module FlowerBundler
   class << self
     def process_order(order_text)
       fail ArgumentError, 'Missing order information' if order_text.nil? || order_text.empty?
-      result = []
+      results = []
       order_text.lines.map(&:chomp).each do |an_order|
         order = Order.parse an_order
-        bundles = order.process
-        result << build_result(order: an_order, bundles: bundles)
+        results << Receipt.new(request: an_order, results: order.process)
       end
-      result
-    end
-
-    private
-
-    def build_result(order:, bundles:)
-      {
-        request: order,
-        total:   bundles.inject(0) { |a, e| e[:count] * e[:price] + a },
-        bundles: bundles
-      }
+      results
     end
   end
 end

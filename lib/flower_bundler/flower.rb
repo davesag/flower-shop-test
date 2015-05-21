@@ -38,11 +38,11 @@ module FlowerBundler
     end
 
     def add_to_results(bundle)
-      existing = @results.find_index { |item| item[:size] == bundle.amount }
+      existing = @results.find_index { |item| item.size == bundle.amount }
       if existing.nil?
-        @results << { count: 1, size: bundle.amount, price: bundle.price }
+        @results << OrderResult.new(bundle)
       else
-        @results[existing][:count] += 1
+        @results[existing].increment
       end
       @total += bundle.amount
     end
