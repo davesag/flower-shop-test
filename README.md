@@ -46,10 +46,10 @@ bundle
 
 ## To run
 
-The test is already in the form of a suite of `rspec` tests so simply run
+The test is already in the form of a suite of `rspec` tests and can be run via the default rake task:
 
 ```sh
-rspec
+rake
 ```
 
 There are 14 tests giving 100% code coverage of the project.
