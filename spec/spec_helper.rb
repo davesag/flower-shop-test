@@ -3,6 +3,11 @@ Bundler.require(:test)
 require 'flower_bundler'
 
 FactoryGirl.find_definitions
+
+CodeClimate::TestReporter.configure do |config|
+  config.path_prefix = "lib"
+end
+
 CodeClimate::TestReporter.start
 
 # I use an ~/.rspec file that holds config
