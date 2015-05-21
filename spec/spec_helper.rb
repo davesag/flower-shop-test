@@ -1,14 +1,14 @@
 Bundler.require(:test)
-
-require 'flower_bundler'
-
-FactoryGirl.find_definitions
-
 CodeClimate::TestReporter.configure do |config|
   config.path_prefix = "lib"
 end
 
-CodeClimate::TestReporter.start
+CodeClimate::TestReporter.start if ENV['CODECLIMATE_REPO_TOKEN']
+# codeclimate test reporter MUST go before the require of the project code
+
+require 'flower_bundler'
+
+FactoryGirl.find_definitions
 
 # I use an ~/.rspec file that holds config
 # color: true
