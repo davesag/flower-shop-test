@@ -1,4 +1,7 @@
 module FlowerBundler
+
+  # A simple singleton registry that hold the flowers that are for sale
+  # and provides a simple mechanism for looking them up by their code
   class Catalogue
     include Singleton
 
@@ -7,12 +10,12 @@ module FlowerBundler
     end
 
     def add(flower)
-      raise ArgumentError, 'Expected a flower' if flower.nil? or !flower.is_a? Flower
+      fail ArgumentError, 'Expected a flower' if flower.nil? || !flower.is_a?(Flower)
       @flowers_by_code[flower.code] = flower
     end
 
     def find(code)
-      raise ArgumentError, 'Expected a code' if code.nil? or code.empty?
+      fail ArgumentError, 'Expected a code' if code.nil? || code.empty?
       @flowers_by_code[code]
     end
 

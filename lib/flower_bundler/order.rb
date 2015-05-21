@@ -1,4 +1,8 @@
 module FlowerBundler
+
+  # A customer wishing to buy one or more bundles of flowers
+  # will place an order, comprising the number of flowers
+  # they wish to buy, and the code representing the type of flowers.
   class Order
     attr_accessor :count, :code
 
