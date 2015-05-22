@@ -2,11 +2,11 @@ FactoryGirl.define do
   factory :roses, class: FlowerBundler::FlowerBundle do
     skip_create
     trait :small do
-      amount 5
+      size 5
       price 699
     end
     trait :large do
-      amount 10
+      size 10
       price 1299
     end
     initialize_with { new(attributes) }
@@ -15,15 +15,15 @@ FactoryGirl.define do
   factory :lilies, class: FlowerBundler::FlowerBundle do
     skip_create
     trait :small do
-      amount 3
+      size 3
       price 995
     end
     trait :medium do
-      amount 6
+      size 6
       price 1695
     end
     trait :large do
-      amount 9
+      size 9
       price 2495
     end
     initialize_with { new(attributes) }
@@ -32,15 +32,15 @@ FactoryGirl.define do
   factory :tulips, class: FlowerBundler::FlowerBundle do
     skip_create
     trait :small do
-      amount 3
+      size 3
       price 595
     end
     trait :medium do
-      amount 5
+      size 5
       price 995
     end
     trait :large do
-      amount 9
+      size 9
       price 1699
     end
     initialize_with { new(attributes) }

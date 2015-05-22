@@ -90,10 +90,6 @@ where `XX` is some number and `YYY` is one of the following valid Flower codes
 
 It will either return a receipt, or an error if it can't construct a valid set of Flower Bundles.
 
-## To do
-
-* refactor the class and property names to be more consistent and more in-line with Ruby standards.
-
 ## License
 
 Even though you are not meant to copy this if doing a test; I'm not at all precious about it, and hey, it's not my test, just my stab at it.

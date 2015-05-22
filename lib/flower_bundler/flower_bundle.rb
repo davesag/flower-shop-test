@@ -2,12 +2,13 @@ module FlowerBundler
 
   # Flowers are sold in discreet bundles.
   # A FlowerBundle is a simple container that describes
-  # the amount of flowers in the bundle, and the price of the bundle.
+  # the number of flowers in the bundle, (i.e. it's size)
+  # and the price of the bundle in an integer number of cents.
   class FlowerBundle
-    attr_accessor :amount, :price
+    attr_accessor :size, :price
 
-    def initialize(amount:, price:)
-      @amount = amount
+    def initialize(size:, price:)
+      @size = size
       @price = price
     end
   end
