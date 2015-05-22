@@ -8,7 +8,7 @@ module FlowerBundler
     def initialize(name:, code:, bundles:)
       @name = name
       @code = code
-      @bundles = bundles.sort_by { |bundle| -bundle.amount }
+      @bundles = bundles.sort_by { |bundle| -bundle.size }
     end
 
     def choose_bundles(flower_count, bundles_to_try = @bundles.dup)
@@ -26,14 +26,14 @@ module FlowerBundler
     def gather_bundles(flower_count, bundles_to_try)
       allowed_bundles = trim_bundles(flower_count, bundles_to_try)
       bundle = allowed_bundles.first
-      count = flower_count / bundle.amount
+      count = flower_count / bundle.size
       @stash << OrderResult.new(count: count, bundle: bundle)
-      return if flower_count % bundle.amount == 0
-      gather_bundles(flower_count - count * bundle.amount, allowed_bundles)
+      return if flower_count % bundle.size == 0
+      gather_bundles(flower_count - count * bundle.size, allowed_bundles)
     end
 
     def trim_bundles(flower_count, bundles_to_try)
-      allowed_bundles = bundles_to_try.reject { |b| b.amount > flower_count }
+      allowed_bundles = bundles_to_try.reject { |b| b.size > flower_count }
       fail BundleError if allowed_bundles.empty?
       allowed_bundles
     end

@@ -18,8 +18,8 @@ module FlowerBundler
     end
 
     def self.parse(order_line)
-      order = order_line.split(' ')
-      Order.new count: order[0], code: order[1]
+      order_details = order_line.split(' ')
+      Order.new count: order_details[0], code: order_details[1]
     end
   end
 end

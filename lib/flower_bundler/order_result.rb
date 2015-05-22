@@ -8,7 +8,7 @@ module FlowerBundler
 
     def initialize(count:, bundle:)
       @count = count
-      @size = bundle.amount
+      @size = bundle.size
       @price = bundle.price
     end
 

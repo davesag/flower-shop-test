@@ -21,18 +21,18 @@ class FlowerShopApp
 
   def seed
     rose_bundles = [
-      FlowerBundler::FlowerBundle.new(amount: 5,  price: 699),
-      FlowerBundler::FlowerBundle.new(amount: 10, price: 1299)
+      FlowerBundler::FlowerBundle.new(size: 5,  price: 699),
+      FlowerBundler::FlowerBundle.new(size: 10, price: 1299)
     ]
     lily_bundles = [
-      FlowerBundler::FlowerBundle.new(amount: 3, price: 995),
-      FlowerBundler::FlowerBundle.new(amount: 6, price: 1695),
-      FlowerBundler::FlowerBundle.new(amount: 9, price: 2495)
+      FlowerBundler::FlowerBundle.new(size: 3, price: 995),
+      FlowerBundler::FlowerBundle.new(size: 6, price: 1695),
+      FlowerBundler::FlowerBundle.new(size: 9, price: 2495)
     ]
     tulip_bundles = [
-      FlowerBundler::FlowerBundle.new(amount: 3, price: 595),
-      FlowerBundler::FlowerBundle.new(amount: 5, price: 995),
-      FlowerBundler::FlowerBundle.new(amount: 9, price: 1699)
+      FlowerBundler::FlowerBundle.new(size: 3, price: 595),
+      FlowerBundler::FlowerBundle.new(size: 5, price: 995),
+      FlowerBundler::FlowerBundle.new(size: 9, price: 1699)
     ]
     roses  = FlowerBundler::Flower.new(name: 'Roses',  code: 'R12', bundles: rose_bundles)
     lilies = FlowerBundler::Flower.new(name: 'Lilies', code: 'L09', bundles: lily_bundles)
