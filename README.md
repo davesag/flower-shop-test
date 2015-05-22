@@ -92,7 +92,7 @@ It will either return a receipt, or an error if it can't construct a valid set o
 
 ## To do
 
-* add some unhappy path tests
+* add some unhappy path tests and bring test coverage back up to 100%
 * refactor the class and property names to be more consistent and more in-line with Ruby standards.
 
 ## License
