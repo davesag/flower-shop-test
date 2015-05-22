@@ -1,7 +1,5 @@
 module FlowerBundler
 
-  class BundleError < ArgumentError; end
-
   # A Flower represents the item actually being ordered.
   # Flowers are sold in bundles.
   class Flower

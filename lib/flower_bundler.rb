@@ -16,6 +16,10 @@ require_relative 'flower_bundler/receipt'
 #   FlowerBundler.process_order(some_order_text)
 # It will return an array of receipts, one for each order.
 module FlowerBundler
+
+  class UnknownFlowerError < ArgumentError; end
+  class BundleError < ArgumentError; end
+
   class << self
     def process_order(order_text)
       fail ArgumentError, 'Missing order information' if order_text.nil? || order_text.empty?
