@@ -39,28 +39,25 @@ The `FlowerBundler` module itself exposes a `process_order` method, the high-lev
 
 ### The problem can be restated as follows:
 
-Let `b1` … `bn` be bundles of flowers (integers > 0) where `n` is the bundle number.
-And let `x1` … `xn` be numbers of bundles (integers >= 0)
-The customer requests `F` flowers (integer > 0)
-And there is an upper bound `N` (`n` <= `N`)
-so `x1 * b1 + x2 * b2 + … xn * bn = F`
-
-`b1` … `bn`, `F` and `N` are known
-
-Reject `F` if no combination of `x1` * `b1` + `x2` * `b2` + … `xn` * `bn` can equal `F`
-
-and optimise `x1` … `xn` such that `n` is minimised.
+* Let `b1` … `bn` be bundles of flowers (integers > 0) where `n` is the bundle number.
+* And let `x1` … `xn` be numbers of bundles (integers >= 0)
+* The customer requests `F` flowers (integer > 0)
+* And there is an upper bound `N` (`n` <= `N`)
+* so `x1 * b1 + x2 * b2 + … xn * bn = F`
+* `b1` … `bn`, `F` and `N` are known
+* Reject `F` if no combination of `x1` * `b1` + `x2` * `b2` + … `xn` * `bn` can equal `F`
+* and optimise `x1` … `xn` such that `n` is minimised.
 
 ### Solution
 
-1. sort `bn` … `b1` highest to lowest
+1. sort `bn` … `b1` from highest to lowest
 2. create empty stash
-3. reject all `bn` where `bn` > `F` so the bundles are now `bn'` … `b1` and `F` must now be >= to `bn'`
+3. reject all `bn` where `bn` > `F` so the bundles are now `bn'` … `b1` and `F` must now be >=  `bn'`
 4. if there are no bundles left then retry from the top but without `bn`. (but if there is nothing to retry with then exit with an error.)
 5. `count = integer `F` / `bn'`
 6. add `count` copies of `bn'` to stash
 7. if `F` / `bn'` is an integer then exit with stash
-8. F' = `F` - `count` * `bn`
+8. `F'` = `F` - `count` * `bn`
 9. repeat from 3
 
 ## Setup
@@ -91,7 +88,12 @@ where `XX` is some number and `YYY` is one of the following valid Flower codes
 * `L09`
 * `T58`
 
-It will either return a receipt, or an error if it cabn't construct a valid set of Flower Bundles.
+It will either return a receipt, or an error if it can't construct a valid set of Flower Bundles.
+
+## To do
+
+* add some unhappy path tests
+* refactor the class and property names to be more consistent and more in-line with Ruby standards.
 
 ## License
 
