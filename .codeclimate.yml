@@ -1,2 +1,4 @@
 languages:
   Ruby: true
+exclude_paths:
+- "flower_shop_app.rb"
