@@ -19,12 +19,10 @@ module FlowerBundler
   class << self
     def process_order(order_text)
       fail ArgumentError, 'Missing order information' if order_text.nil? || order_text.empty?
-      results = []
-      order_text.lines.map(&:chomp).each do |an_order|
+      order_text.lines.map(&:chomp).map do |an_order|
         order = Order.parse an_order
-        results << Receipt.new(request: an_order, results: order.process)
+        Receipt.new(request: an_order, results: order.process)
       end
-      results
     end
   end
 end
