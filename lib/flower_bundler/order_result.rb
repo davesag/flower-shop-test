@@ -6,8 +6,8 @@ module FlowerBundler
   class OrderResult
     attr_accessor :count, :size, :price
 
-    def initialize(bundle)
-      @count = 1
+    def initialize(count:, bundle:)
+      @count = count
       @size = bundle.amount
       @price = bundle.price
     end

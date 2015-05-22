@@ -28,12 +28,40 @@ I have defined the following classes, all namespaced within a `FlowerBundler` mo
 
 * `Catalogue` — a singleton that allows flowers to be added and searched.  This takes the place of any kind of object persistence.
 * `FlowerBundle` — holds details of the flower count and price for a bundle of flowers.
-* `Flower` — has a name, code, list of bundles, and a `choose_bundles` method that implements the core bundle selection logic in a simple, recursive way.
+* `Flower` — has a name, code, list of bundles, and a `choose_bundles` method that implements the core bundle selection logic.
 * `Order` — a simple customer order that can be created via `Order.parse`
 * `OrderResult` — container for the processed result of an order
 * `Receipt` — a collection of order results with a copy of the initial customer order string and the total price.  This can be output to formatted text via its `to_formatted` method.
 
-The `FlowerBundler` module itself exposes a `process_order` method, the high-level input interface to the system. It returns a result in the form of a hash, containing the receipt details.
+The `FlowerBundler` module itself exposes a `process_order` method, the high-level input interface to the system. It returns a result in the form of a `Receipt`, containing one or more `OrderDetails`.
+
+## Bundle selection logic.
+
+### The problem can be restated as follows:
+
+Let `b1` … `bn` be bundles of flowers (integers > 0) where `n` is the bundle number.
+And let `x1` … `xn` be numbers of bundles (integers >= 0)
+The customer requests `F` flowers (integer > 0)
+And there is an upper bound `N` (`n` <= `N`)
+so `x1 * b1 + x2 * b2 + … xn * bn = F`
+
+`b1` … `bn`, `F` and `N` are known
+
+Reject `F` if no combination of `x1` * `b1` + `x2` * `b2` + … `xn` * `bn` can equal `F`
+
+and optimise `x1` … `xn` such that `n` is minimised.
+
+### Solution
+
+1. sort `bn` … `b1` highest to lowest
+2. create empty stash
+3. reject all `bn` where `bn` > `F` so the bundles are now `bn'` … `b1` and `F` must now be >= to `bn'`
+4. if there are no bundles left then retry from the top but without `bn`. (but if there is nothing to retry with then exit with an error.)
+5. `count = integer `F` / `bn'`
+6. add `count` copies of `bn'` to stash
+7. if `F` / `bn'` is an integer then exit with stash
+8. F' = `F` - `count` * `bn`
+9. repeat from 3
 
 ## Setup
 

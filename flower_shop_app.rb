@@ -12,7 +12,7 @@ class FlowerShopApp
       FlowerBundler.process_order(@order).each do |receipt|
         puts receipt.to_formatted
       end
-    rescue ArgumentError => e
+    rescue FlowerBundler::BundleError => e
       puts "Error: #{e.message}"
     end
   end
