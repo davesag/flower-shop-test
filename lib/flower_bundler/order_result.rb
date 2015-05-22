@@ -12,16 +12,5 @@ module FlowerBundler
       @price = bundle.price
     end
 
-    def increment
-      @count += 1
-    end
-
-    def ==(other)
-      return false unless @size == other.size
-      return false unless @count == other.count
-      return false unless @price == other.price
-      true
-    end
-
   end
 end

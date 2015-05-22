@@ -47,5 +47,9 @@ end
 if __FILE__ == $0
   $stdout.sync = true
   app = FlowerShopApp.new(ARGV.join(' '))
-  app.process_order
+  begin
+    app.process_order
+  rescue => e
+    puts "Error: #{e.message}"
+  end
 end

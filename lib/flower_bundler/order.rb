@@ -13,7 +13,7 @@ module FlowerBundler
 
     def process
       flower = Catalogue.find code
-      return if flower.nil?
+      fail UnknownFlowerError, "Flower code #{code} is unknown" if flower.nil?
       flower.choose_bundles count
     end
 

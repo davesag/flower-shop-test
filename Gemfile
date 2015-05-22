@@ -6,6 +6,7 @@ group :test do
   gem 'rake', require: false
   gem 'rspec'
   gem "codeclimate-test-reporter"
+  gem 'simplecov'
   gem 'factory_girl'
   gem 'rspec-its'
   gem 'pry'
