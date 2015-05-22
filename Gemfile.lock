@@ -59,3 +59,4 @@ DEPENDENCIES
   rake
   rspec
   rspec-its
+  simplecov

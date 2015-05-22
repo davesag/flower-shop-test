@@ -1,6 +1,11 @@
 Bundler.require(:test)
 
-CodeClimate::TestReporter.start if ENV['CODECLIMATE_REPO_TOKEN']
+if ENV['CODECLIMATE_REPO_TOKEN']
+  CodeClimate::TestReporter.start
+else
+  SimpleCov.start
+end
+
 # codeclimate test reporter MUST go before the require of the project code
 
 require 'flower_bundler'
