@@ -1,0 +1,6 @@
+Metrics/LineLength:
+  Max: 95
+Style/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/EmptyLinesAroundModuleBody:
+  Enabled: false
