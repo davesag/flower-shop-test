@@ -1,5 +1,7 @@
 module FlowerBundler
 
+  class BundleError < ArgumentError; end
+
   # A Flower represents the item actually being ordered.
   # Flowers are sold in bundles.
   class Flower
@@ -11,40 +13,32 @@ module FlowerBundler
       @bundles = bundles.sort_by { |bundle| -bundle.amount }
     end
 
-    def choose_bundles(flower_count, some_bundles = @bundles)
-      fail ArgumentError, 'Not enough flowers' if flower_count < some_bundles.last.amount
-      @results = []
-      @total = 0
-      try_bundles(some_bundles, flower_count, flower_count)
-      if @total != flower_count && some_bundles.size > 1
-        choose_bundles(flower_count, some_bundles.dup.drop(1))
-      end
-      fail ArgumentError, "Could not divide #{flower_count} flowers into bundles" if @results.empty? || @total != flower_count
-      @results
+    def choose_bundles(flower_count, bundles_to_try = @bundles.dup)
+      @stash = []
+      gather_bundles(flower_count, bundles_to_try)
+      @stash
+    rescue BundleError
+      bundles_to_try.shift
+      retry unless bundles_to_try.empty?
+      raise BundleError, "Can't make bundles from #{flower_count} #{@name}"
     end
 
     private
 
-    def try_bundles(bundles_to_try, remaining_flowers, flower_count)
-      return if remaining_flowers == 0 || @total >= flower_count
-      bundles_to_try.each do |bundle|
-        next if remaining_flowers < bundle.amount
-        if bundle.amount == remaining_flowers
-          add_to_results(bundle)
-        else
-          try_bundles(bundles_to_try, remaining_flowers - 1, flower_count)
-        end
-      end
+    def gather_bundles(flower_count, bundles_to_try)
+      allowed_bundles = trim_bundles(flower_count, bundles_to_try)
+      bundle = allowed_bundles.first
+      count = flower_count / bundle.amount
+      @stash << OrderResult.new(count: count, bundle: bundle)
+      return if flower_count % bundle.amount == 0
+      gather_bundles(flower_count - count * bundle.amount, allowed_bundles)
     end
 
-    def add_to_results(bundle)
-      existing = @results.find_index { |item| item.size == bundle.amount }
-      if existing.nil?
-        @results << OrderResult.new(bundle)
-      else
-        @results[existing].increment
-      end
-      @total += bundle.amount
+    def trim_bundles(flower_count, bundles_to_try)
+      allowed_bundles = bundles_to_try.reject { |b| b.amount > flower_count }
+      fail BundleError if allowed_bundles.empty?
+      allowed_bundles
     end
+
   end
 end

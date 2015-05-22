@@ -19,6 +19,6 @@ FactoryGirl.define do
       transient { bundle { build :tulips, :small } }
     end
 
-    initialize_with { new(bundle) }
+    initialize_with { new(count: count, bundle: bundle) }
   end
 end
