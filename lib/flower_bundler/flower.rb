@@ -3,7 +3,7 @@ module FlowerBundler
   # A Flower represents the item actually being ordered.
   # Flowers are sold in bundles.
   class Flower
-    attr_accessor :name, :code, :bundles
+    attr_reader :name, :code, :bundles
 
     def initialize(name:, code:, bundles:)
       @name = name

@@ -3,7 +3,7 @@ module FlowerBundler
   # When a customer order has been processed the system must emit
   # a receipt that sumarises the order.
   class Receipt
-    attr_accessor :request, :results, :total
+    attr_reader :request, :results, :total
 
     def initialize(request:, results:)
       @request = request
