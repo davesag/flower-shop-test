@@ -27,8 +27,9 @@ The flower bundler problem is a derivative of the classic [knapsack problem](htt
 I have defined the following classes, all namespaced within a `FlowerBundler` module.
 
 * `Catalogue` — a singleton that allows flowers to be added and searched.  This takes the place of any kind of object persistence.
+* `Chooser` — implements the core bundle selection logic.
+* `Flower` — has a name, code, list of bundles.
 * `FlowerBundle` — holds details of the flower count and price for a bundle of flowers.
-* `Flower` — has a name, code, list of bundles, and a `choose_bundles` method that implements the core bundle selection logic.
 * `Order` — a simple customer order that can be created via `Order.parse`
 * `OrderResult` — container for the processed result of an order
 * `Receipt` — a collection of order results with a copy of the initial customer order string and the total price.  This can be output to formatted text via its `to_formatted` method.
@@ -58,7 +59,9 @@ The `FlowerBundler` module itself exposes a `process_order` method, the high-lev
 6. add `count` copies of `bn'` to stash
 7. if `F` / `bn'` is an integer then exit with stash
 8. `F'` = `F` - `count` * `bn`
-9. repeat from 3
+9. if `F'` < `b1` and `count` == 1 abort  - drop top bundle, empty stash and restart
+10. 9. F' < `b1` and count > 1 then back up, decrement the last stashed bundle, drop `bn` from the bundle list and set F' to `F` - (`count` - 1) * `bn`
+11. repeat from 3
 
 ## Setup
 

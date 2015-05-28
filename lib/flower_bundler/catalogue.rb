@@ -13,7 +13,7 @@ module FlowerBundler
 
     def add(flower)
       fail ArgumentError, 'Expected a flower' if flower.nil? || !flower.is_a?(Flower)
-      @flowers_by_code[flower.code.to_sym] = flower
+      @flowers_by_code[flower.code.to_sym] = flower.freeze
     end
 
     def find(code)
