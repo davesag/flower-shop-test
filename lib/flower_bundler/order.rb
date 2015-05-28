@@ -14,7 +14,8 @@ module FlowerBundler
     def process
       flower = Catalogue.find code
       fail UnknownFlowerError, "Flower code #{code} is unknown" if flower.nil?
-      flower.choose_bundles count
+      chooser = Chooser.new(flower: flower, flower_count: count)
+      chooser.choose
     end
 
     def self.parse(order_line)

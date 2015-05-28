@@ -1,3 +1,4 @@
+require_relative 'flower_bundler/chooser'
 require_relative 'flower_bundler/flower'
 require_relative 'flower_bundler/flower_bundle'
 require_relative 'flower_bundler/catalogue'
