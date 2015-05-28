@@ -7,8 +7,8 @@ module FlowerBundler
     attr_reader :count, :code
 
     def initialize(count:, code:)
-      @count = count.to_i
-      @code = code
+      @count = count.to_i.freeze
+      @code = code.freeze
     end
 
     def process

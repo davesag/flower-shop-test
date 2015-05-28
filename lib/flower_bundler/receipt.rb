@@ -6,8 +6,8 @@ module FlowerBundler
     attr_reader :request, :results, :total
 
     def initialize(request:, results:)
-      @request = request
-      @results = results
+      @request = request.freeze
+      @results = results.freeze
       @total = compute_total
     end
 
