@@ -4,12 +4,12 @@ module FlowerBundler
   # with an collection of order result that indicate
   # which bundles of flowers are to be shipped.
   class OrderResult
-    attr_accessor :count, :size, :price
+    attr_reader :count, :size, :price
 
     def initialize(count:, bundle:)
-      @count = count
-      @size = bundle.size
-      @price = bundle.price
+      @count = count.freeze
+      @size = bundle.size.freeze
+      @price = bundle.price.freeze
     end
 
   end

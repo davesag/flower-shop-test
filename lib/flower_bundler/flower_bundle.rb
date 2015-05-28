@@ -5,7 +5,7 @@ module FlowerBundler
   # the number of flowers in the bundle, (i.e. it's size)
   # and the price of the bundle in an integer number of cents.
   class FlowerBundle
-    attr_accessor :size, :price
+    attr_reader :size, :price
 
     def initialize(size:, price:)
       @size = size

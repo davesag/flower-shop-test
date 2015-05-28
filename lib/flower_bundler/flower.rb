@@ -3,12 +3,12 @@ module FlowerBundler
   # A Flower represents the item actually being ordered.
   # Flowers are sold in bundles.
   class Flower
-    attr_accessor :name, :code, :bundles
+    attr_reader :name, :code, :bundles
 
     def initialize(name:, code:, bundles:)
-      @name = name
-      @code = code
-      @bundles = bundles.sort_by { |bundle| -bundle.size }
+      @name = name.freeze
+      @code = code.freeze
+      @bundles = (bundles.sort_by { |bundle| -bundle.size }).freeze
     end
 
     def choose_bundles(flower_count, bundles_to_try = @bundles.dup)

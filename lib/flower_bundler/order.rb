@@ -4,11 +4,11 @@ module FlowerBundler
   # will place an order, comprising the number of flowers
   # they wish to buy, and the code representing the type of flowers.
   class Order
-    attr_accessor :count, :code
+    attr_reader :count, :code
 
     def initialize(count:, code:)
-      @count = count.to_i
-      @code = code
+      @count = count.to_i.freeze
+      @code = code.freeze
     end
 
     def process
