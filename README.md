@@ -60,7 +60,7 @@ The `FlowerBundler` module itself exposes a `process_order` method, the high-lev
 7. if `F` / `bn'` is an integer then exit with stash
 8. `F'` = `F` - `count` * `bn`
 9. if `F'` < `b1` and `count` == 1 abort  - drop top bundle, empty stash and restart
-10. 9. F' < `b1` and count > 1 then back up, decrement the last stashed bundle, drop `bn` from the bundle list and set F' to `F` - (`count` - 1) * `bn`
+10. if `F'` < `b1` and count > 1 then back up, decrement the last stashed bundle, drop `bn` from the bundle list and set F' to `F` - (`count` - 1) * `bn`
 11. repeat from 3
 
 ## Setup
